@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {    public Transform Weapon;
     public GameObject Attack1;
-    
+
     public Camera maincamera;
 
     public float Attackforce = 20f;
@@ -15,7 +15,7 @@ public class Attack : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             CurrentAttack();
-        }        
+        }
     }
     private void CurrentAttack()
     {
@@ -28,9 +28,9 @@ public class Attack : MonoBehaviour
         lookDir.z = 0;
 
         lookDir = (lookDir - attack.transform.position).normalized;
-        
-        rb2d.AddForce(lookDir * Attackforce, ForceMode2D.Impulse); 
-        
+
+        rb2d.AddForce(lookDir * Attackforce, ForceMode2D.Impulse);
+
     }
 
 }

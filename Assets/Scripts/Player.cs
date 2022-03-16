@@ -22,7 +22,7 @@ public class Player : MovingObject {
     private Animator animator;
     private int food;
 
-    private Vector2 moveDirection; 
+    private Vector2 moveDirection;
 
     public Camera maincamera;
 
@@ -36,12 +36,13 @@ public class Player : MovingObject {
     protected override void Start()
     {
         animator = GetComponent<Animator>();
-      
+
         playerbody = GetComponent<Rigidbody2D>();
 
         food = GameManager.instance.playerFoodPoints;
 
         foodText.text = "Food: " + food;
+
 
         base.Start();
     }
@@ -56,11 +57,18 @@ public class Player : MovingObject {
     {
         ProcessInputs();
     }
+
     private void FixedUpdate()
     {
+        if(moveDirection.x == 0 && moveDirection.y == 0)
+            animator.SetBool("playerRunning", false);
+        else
+            animator.SetBool("playerRunning", true);
         AttemptMove<Wall> (moveDirection.x, moveDirection.y);
+        Debug.Log( "x : " + moveDirection.x +", y ; "+ moveDirection.y);
 
     }
+
     private void ProcessInputs()
     {
 
@@ -93,7 +101,7 @@ public class Player : MovingObject {
         {
             playerbody.transform.localScale = new Vector3 (1,1,1);
         }
-        else 
+        else
         {
             playerbody.transform.localScale = new Vector3 (-1,1,1);
         }
@@ -127,7 +135,7 @@ public class Player : MovingObject {
         hitWall.DamageWall(wallDamage);
         animator.SetTrigger("playerChop");
     }
-    
+
     private void Restart()
     {
         Application.LoadLevel(Application.loadedLevel);
