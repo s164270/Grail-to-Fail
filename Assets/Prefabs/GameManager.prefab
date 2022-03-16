@@ -48,7 +48,7 @@ MonoBehaviour:
   turnDelay: 0.1
   boardScript: {fileID: 0}
   playerFoodPoints: 100
-  playersTurn: 1
+  levelText: {fileID: 0}
 --- !u!114 &2728579054202403755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b5090fcfb3daab8a1503a3b8a5cf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 8
-  rows: 8
+  columns: 20
+  rows: 20
   wallCount:
     minimum: 8
     maximum: 12

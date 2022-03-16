@@ -6,10 +6,9 @@ public class Loader : MonoBehaviour
 {
     public GameObject gameManager;
 
-    // Update is called once per frame
     void Awake()
     {
-        if(GameManager.instance == null)
+        if (GameManager.instance == null)
             Instantiate(gameManager);
     }
 }
