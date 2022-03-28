@@ -140,7 +140,7 @@ namespace Completed
             InitialiseList();
             //LayoutObjetAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
             int enemyCount = (int)Math.Log(level,2f);
-            //LayoutObjetAtRandom(enemyTiles, enemyCount, enemyCount);
+            LayoutObjetAtRandom(enemyTiles, enemyCount, enemyCount);
             Instantiate(exit, new Vector3(columns-2, rows -2, 0F), Quaternion.identity);
         }
 

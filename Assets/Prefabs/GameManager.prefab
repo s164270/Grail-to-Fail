@@ -103,7 +103,7 @@ MonoBehaviour:
   - {fileID: 7512427723648234251, guid: a78bdcea25135ff41a826044a0da7721, type: 3}
   foodTiles: []
   enemyTiles:
-  - {fileID: 7512427723648234251, guid: a78bdcea25135ff41a826044a0da7721, type: 3}
+  - {fileID: 9075172534798218139, guid: 13c9f398709e58e4a95b65a95dd814fb, type: 3}
   outerWallTiles:
   - {fileID: 3024832897622580885, guid: efe0c9bd99c920f7ab4d96e365c8f766, type: 3}
   - {fileID: 4324802371720059573, guid: 11ae140321980a0d083cf19930ec38ba, type: 3}

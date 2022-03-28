@@ -7,6 +7,8 @@ public class Player : MovingObject {
 
 
     public int wallDamage = 1;
+
+    public int health = 100;
     public int pointsPerFood = 10;
     public int pointsPerSoda = 20;
     public float restartLevelDelay = 1f;
@@ -65,7 +67,6 @@ public class Player : MovingObject {
         else
             animator.SetBool("playerRunning", true);
         AttemptMove<Wall> (moveDirection.x, moveDirection.y);
-        Debug.Log( "x : " + moveDirection.x +", y ; "+ moveDirection.y);
 
     }
 
