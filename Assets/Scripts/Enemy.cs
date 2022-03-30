@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     public float moveSpeed = 200f;
     public float nextWayPointDistance = 3f;
-
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
@@ -86,11 +85,11 @@ protected virtual void LookDirection(Vector2 force)
 {
     if (force.x >= 0.01f)
     {
-        rb2D.transform.localScale = new Vector3 (-1f,1f,1f);
+        rb2D.transform.localScale = new Vector3 (1f,1f,1f);
     }
     else if (force.x <= -0.01f)
     {
-        rb2D.transform.localScale = new Vector3 (1f,1f,1f);
+        rb2D.transform.localScale = new Vector3 (-1f,1f,1f);
     }
 }
 }
