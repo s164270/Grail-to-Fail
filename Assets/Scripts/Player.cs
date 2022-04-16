@@ -94,6 +94,7 @@ public class Player : MovingObject {
         CheckIfGameOver();
 
     }
+    
     private void LookDirection()
     {
         Vector2 lookDir = mousePos - playerbody.position;

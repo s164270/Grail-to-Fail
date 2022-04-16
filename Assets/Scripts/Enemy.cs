@@ -21,11 +21,14 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
 
+    private Animator animator;
+
     public float stopdistance;
 
 
 protected virtual void Start()
 {
+    animator = GetComponent<Animator>();
     seeker = GetComponent<Seeker>();
     player = GameObject.FindObjectOfType<Player>().transform;
     boxCollider = GetComponent<BoxCollider2D>();
@@ -80,6 +83,15 @@ protected virtual void Move(Vector2 force)
     if((Vector2.Distance(transform.position, player.position) < detectionAoe) & (Vector2.Distance(transform.position, player.position) > stopdistance)){
         rb2D.AddForce(force);
     }
+    if (Vector2.Distance(transform.position, player.position) < stopdistance){
+        animator.SetBool("enemyHit", true);
+    } 
+    if (Vector2.Distance(transform.position, player.position) > stopdistance){
+        animator.SetBool("enemyHit", false);
+    } 
+}
+protected virtual void Attack(){
+    GameObject.FindObjectOfType<Player>().health -= damage;
 }
 protected virtual void LookDirection(Vector2 force)
 {

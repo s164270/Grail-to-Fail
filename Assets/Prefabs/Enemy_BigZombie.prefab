@@ -171,7 +171,7 @@ MonoBehaviour:
   damage: 10
   detectionAoe: 10
   attackSpeed: 0
-  stopdistance: 1
+  stopdistance: 1.8
 --- !u!114 &1661714413819323605
 MonoBehaviour:
   m_ObjectHideFlags: 0
