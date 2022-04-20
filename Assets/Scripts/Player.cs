@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MovingObject {
 
+    public static Player instance { get; private set; }
 
     public int wallDamage = 1;
 
@@ -35,10 +36,11 @@ public class Player : MovingObject {
     public Vector3 offset;
 
 
+    private int timeSinceLastDamage = 30;
+
     protected override void Start()
     {
         animator = GetComponent<Animator>();
-
         playerbody = GetComponent<Rigidbody2D>();
 
         food = GameManager.instance.playerFoodPoints;
@@ -51,7 +53,13 @@ public class Player : MovingObject {
 
     private void OnDisable()
     {
+        instance = null;
         GameManager.instance.playerFoodPoints = food;
+    }
+
+    private void OnEnable()
+    {
+        instance = this;
     }
 
     // Update is called once per frame
@@ -68,6 +76,7 @@ public class Player : MovingObject {
             animator.SetBool("playerRunning", true);
         AttemptMove<Wall> (moveDirection.x, moveDirection.y);
 
+        if (timeSinceLastDamage < 30) timeSinceLastDamage++;
     }
 
     private void ProcessInputs()
@@ -119,8 +128,9 @@ public class Player : MovingObject {
         {
             food += pointsPerFood;
             foodText.text = "+" + pointsPerFood + " Food: " + food;
-            SoundManager.instance.RandomizeSfx(eatSound1, eatSound2);
+            //SoundManager.instance.RandomizeSfx(eatSound1, eatSound2);
             other.gameObject.SetActive(false);
+
         }
         else if (other.tag == "Soda")
         {
@@ -143,6 +153,15 @@ public class Player : MovingObject {
         Application.LoadLevel(Application.loadedLevel);
     }
 
+    public void TakeDamage(int damage)
+    {
+        if (timeSinceLastDamage >= 30)
+        {
+            timeSinceLastDamage = 0;
+            LoseFood(damage);
+        }
+    }
+
     public void LoseFood (int loss)
     {
         animator.SetTrigger("playerHit");
@@ -155,8 +174,8 @@ public class Player : MovingObject {
     {
         if (food <= 0)
         {
-            SoundManager.instance.PlaySingle(gameOverSound);
-            SoundManager.instance.musicSource.Stop();
+            //SoundManager.instance.PlaySingle(gameOverSound);
+            //SoundManager.instance.musicSource.Stop();
             GameManager.instance.GameOver();
         }
     }
